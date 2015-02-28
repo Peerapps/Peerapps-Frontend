@@ -1,5 +1,7 @@
 Peerapps Frontend
 ===
+[![Tip Balance For Commits](http://peer4commit.com/projects/148.svg)](http://peer4commit.com/projects/148)
+
 This folder contains the source code to the default Peerapps platform frontend. Mod it at will! It will not be bundled up in the binary, but rather will be a folder existing next to the binary - so any end user can mod the frontend themselves or simply drag and drop a community frontend in.
 
 ## What can I mod?
