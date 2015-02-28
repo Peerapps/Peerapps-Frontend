@@ -17,4 +17,5 @@ Just drag and drop index.html onto your browse. Done. No special software needed
  - Submit a pull request to this repo adding a link to your forked repo in the community frontend section below.
 
 ## Community Frontends
- - [emeth: 3 column bootstrap](http://github.com)
+ - emeth: 3 column bootstrap [Source](https://github.com/Peerapps/Peerapps-Frontend) [Demo](https://cdn.rawgit.com/Peerapps/Peerapps-Frontend/master/setup.html)
+
