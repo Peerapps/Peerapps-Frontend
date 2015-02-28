@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="static/images/peercoin.png">
+
+    <title>PeerApps Setup</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="static/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap theme -->
+    <link href="static/css/bootstrap-theme.min.css" rel="stylesheet">
+    <style>
+        .address_from {
+            font-size: 10px;
+        }
+        .time_ago {
+            font-size: 10px;
+            color: grey;
+        }
+    </style>
+
+    <!-- Custom styles for this template -->
+    <link href="static/css/theme.css" rel="stylesheet">
+    <script src="static/js/jquery.min.js"></script>
+    <script src="static/js/bootstrap.min.js"></script>
+    <script src="static/js/jquery.mockjax.js"></script>
+    <script src="static/js/peerapps_mockjax.js"></script>
+    <script src="static/js/setup.js"></script>
+  </head>
+
+  <body role="document">
+
+    <!-- Fixed navbar -->
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">PeerApps</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="setup.html">Setup</a></li>
+            <li><a href="peermessage.html">PeerMessage</a></li>
+            <li><a href="peerblog.html">PeerBlog</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+    <div class="container theme-showcase" role="main">
+
+      <!-- Main jumbotron for a primary marketing message or call to action -->
+      <div class="jumbotron">
+      <h2>Setup</h2>
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title">
+                First Steps
+              </h3>
+            </div>
+            <div class="panel-body">
+                <ol>
+                    <li><a id="gpg_install_link" href="" target="_blank">Install GPG</a> <span id="gpg_suite_installed"><img src="static/images/ajax-loader.gif"></span></li>
+                    <li><a href="http://peercoin.net/download" target="_blank">Install Peercoin Wallet</a></li>
+                    <li>
+                        Buy some PPC <a href="https://btc-e.com/exchange/ppc_usd" target="_blank">with fiat</a> or <a href="https://shapeshift.io/" target="_blank">with cryptocurrency</a>.
+                    </li>
+                </ol>
+            </div>
+          </div>
+        </div><!-- /.col-sm-4 -->
+        <div class="col-sm-4">
+          <div class="panel panel-success" id="dropbox_panel">
+            <div class="panel-heading">
+              <h3 class="panel-title">
+                Wallet Configuration (ppcoin.conf)
+                <span id="file_loc_tooltip" class="glyphicon glyphicon-question-sign" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="" data-original-title=""></span>
+                </h3>
+            </div>
+            <div class="panel-body" id="">
+
+                <span class="glyphicon glyphicon-question-sign" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="" data-original-title="Must be set to True or 1 to allow PeerMessage to communicate with your wallet and the blockchain via json-rpc"></span> server:
+                <span id="server"><img src="static/images/ajax-loader.gif"></span><br />
+
+                <span class="glyphicon glyphicon-question-sign" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="" data-original-title="The username used for authentication to the json-rpc server. Can be anything."></span> rpcuser:
+                <span id="rpcuser"><img src="static/images/ajax-loader.gif"></span><br />
+
+                <span class="glyphicon glyphicon-question-sign" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="" data-original-title="The password used for authentication to the json-rpc server. Can be anything, you don't need to remember it, but make it random, long, and secure."></span> rpcpassword:
+                <span id="rpcpassword"><img src="static/images/ajax-loader.gif"></span><br />
+                <!--
+                <span class="glyphicon glyphicon-question-sign" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="" data-original-title="Must be set to True or 1 to tell your wallet to keep all transactions indexed so they can be scanned for messages. PeerMessage uses op_return transactions, which are immediately pruned if this is not set."></span> txindex:
+                <span id="txindex"><img src="static/images/ajax-loader.gif"></span><br />
+                -->
+
+                <br />
+                <button class="btn btn-success" id="automatically_setup_button" onclick="config_automatic_setup()" style="display:none">Automatically setup for me</button>
+            </div>
+          </div>
+        </div><!-- /.col-sm-4 -->
+        <div class="col-sm-4">
+          <div class="panel panel-danger" id="ftp_panel">
+            <div class="panel-heading">
+              <h3 class="panel-title">Blockchain Status</h3>
+            </div>
+            <div class="panel-body">
+
+                <span class="glyphicon glyphicon-question-sign" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="" data-original-title="Will show GOOD when your wallet is on and it's json rpc server is setup."></span> Connected to Wallet:
+                <span id="wallet_connected_status"><img src="static/images/ajax-loader.gif"></span><br /><br />
+            </div>
+          </div>
+        </div><!-- /.col-sm-4 -->
+      </div>
+      
+      </div>
+    </div> <!-- /container -->
+    <script id="message_template" type="text/html"><hr />
+        <span class="address_from">{{ address_from }}</span><br />
+        <span class="time_ago">{{ time }}</span><br />
+        {{ msg }} [<a href="javascript:void(0)" onclick="reply_to_message('{{ address_from }}')">Reply</a>]<br />
+    </script>
+  </body>
+</html>
