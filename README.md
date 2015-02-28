@@ -16,7 +16,7 @@ Just drag and drop index.html onto your browse. Done. No special software needed
 ## How do I publish my mod?
  - Fork this repo.
  - Make your mods, publish them to your fork.
- - Submit a pull request to this repo adding a link to your forked repo in the community frontend section below.
+ - Submit a pull request to this repo adding a link to your forked repo in the community frontend section below. Do not include your mods in the pull request, ONLY edit this readme and add a link to your fork.
 
 ## Community Frontends
  - emeth: 3 column bootstrap [Source](https://github.com/Peerapps/Peerapps-Frontend) [Demo](https://cdn.rawgit.com/Peerapps/Peerapps-Frontend/master/setup.html)
