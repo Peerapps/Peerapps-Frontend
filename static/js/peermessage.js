@@ -61,7 +61,7 @@ function reply_to_message(id) {
 
 function submit_new_message(wallet_passphrase) {
 
-    jQuery("#submit_message_loading").html('<img src="frontend/static/images/ajax-loader.gif">');
+    jQuery("#submit_message_loading").html('<img src="static/images/ajax-loader.gif">');
     jQuery("#submit_message_button").hide();
 
     var post_data = {
@@ -108,7 +108,7 @@ function submit_new_message(wallet_passphrase) {
 }
 
 function publish_pk(wallet_passphrase) {
-    jQuery("#public_key_status_loading").html('<img src="frontend/static/images/ajax-loader.gif">');
+    jQuery("#public_key_status_loading").html('<img src="static/images/ajax-loader.gif">');
     jQuery("#public_key_status_incomplete").hide();
     jQuery("#public_key_status_complete").hide();
     var post_data = {
@@ -152,7 +152,7 @@ function publish_pk(wallet_passphrase) {
 }
 
 function setup_gpg() {
-    jQuery("#local_gpg_status_loading").html('<img src="frontend/static/images/ajax-loader.gif">');
+    jQuery("#local_gpg_status_loading").html('<img src="static/images/ajax-loader.gif">');
     jQuery("#local_gpg_status_incomplete").hide();
     jQuery("#local_gpg_status_complete").hide();
     jQuery.ajax({

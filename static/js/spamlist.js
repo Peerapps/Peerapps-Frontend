@@ -21,7 +21,7 @@ function remove_from_spamlist(address) {
 
 function submit_add_spam(address) {
     if(confirm("Are you sure? All your messages from this address will be deleted.")) {
-        jQuery("#add_spam_loading").html('<img src="frontend/static/images/ajax-loader.gif">');
+        jQuery("#add_spam_loading").html('<img src="=static/images/ajax-loader.gif">');
         jQuery("#submit_add_spam").hide();
         jQuery.ajax({
             type: "POST",
