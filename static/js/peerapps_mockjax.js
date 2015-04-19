@@ -2,6 +2,30 @@ var enable_mockjax = true; //set to false to disable mockjax and use the real se
 if (enable_mockjax) {
 
     $.mockjax({
+        url: "/peercoin_minting_data",
+        response: function() {
+            this.responseText = {
+                "status":"success",
+                "difficulty":"17.18987806",
+                "data":[
+                    [
+                        "5b630fc7fa78458d5a5C9128bc785a4778201255c645da5c4192bce03222e108",
+                        "PBbGFvNqP2MmJEp1xpBBMAo9DR2wGydj4U",
+                        14,
+                        "5.00000000",
+                        0,
+                        ""
+                    ]
+                ]
+            }
+            if (Math.floor(Math.random() * 50) == 3) {
+                //one in 50 generates server error
+                this.status = 500;
+            }
+        },
+    });
+
+    $.mockjax({
         url: "/get_blogs",
         response: function() {
             this.responseText = {
