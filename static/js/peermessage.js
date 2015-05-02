@@ -16,7 +16,7 @@ function delete_message(tx_id) {
     if(confirm("Are you sure?")) {
         jQuery.ajax({
             type: "POST",
-            url: "/delete_message",
+            url: "/peermessage/delete_message/",
             dataType: "json",
             data: {
                 "tx_id": tx_id
@@ -37,7 +37,7 @@ function mark_address_as_spammer(address) {
     if(confirm("Are you sure? All your messages from this address will be deleted.")) {
         jQuery.ajax({
             type: "POST",
-            url: "/mark_address_as_spam",
+            url: "/peermessage/mark_address_as_spam/",
             dataType: "json",
             data: {
                 "address": address
@@ -75,7 +75,7 @@ function submit_new_message(wallet_passphrase) {
 
     jQuery.ajax({
         type: "POST",
-        url: "/transmit_message",
+        url: "/peermessage/transmit_message/",
         dataType: "json",
         data: post_data,
         success: function(data) {
@@ -119,7 +119,7 @@ function publish_pk(wallet_passphrase) {
     }
     jQuery.ajax({
         type: "POST",
-        url: "/publish_pk",
+        url: "/peermessage/publish_pk/",
         dataType: "json",
         data: post_data,
         success: function(data) {
@@ -157,7 +157,7 @@ function setup_gpg() {
     jQuery("#local_gpg_status_complete").hide();
     jQuery.ajax({
         type: "POST",
-        url: "/setup_gpg",
+        url: "/peermessage/setup_gpg/",
         dataType: "json",
         data: {
             "address": $('#peercoin_address').val()
@@ -180,7 +180,7 @@ function setup_gpg() {
 function check_setup_status() {
     jQuery.ajax({
         type: "POST",
-        url: "/check_setup_status",
+        url: "/peermessage/check_setup_status/",
         dataType: "json",
         data: {
             "address": $('#peercoin_address').val()
@@ -217,7 +217,7 @@ function check_setup_status() {
 function blockchain_scan_status() {
     jQuery.ajax({
         type: "POST",
-        url: "/blockchain_scan_status",
+        url: "/blockchain_scan_status/",
         dataType: "json",
         data: {},
         success: function(data) {
@@ -241,7 +241,7 @@ function blockchain_scan_status() {
 function get_messages() {
     jQuery.ajax({
         type: "POST",
-        url: "/get_messages",
+        url: "/peermessage/get_messages/",
         dataType: "json",
         data: {
             "address": $('#peercoin_address').val()
@@ -269,7 +269,7 @@ var address_to_balance = {};
 $(document).ready(function(){
     jQuery.ajax({
         type: "POST",
-        url: "/get_addresses",
+        url: "/get_addresses/",
         dataType: "json",
         data: {},
         success: function(data) {
@@ -300,7 +300,7 @@ $(document).ready(function(){
     blockchain_scan_status();
 
     $( "#new_message_address" ).autocomplete({
-        source: "autocomplete_address/",
+        source: "peermessage/autocomplete_address/",
         minLength: 0,
         select: function( event, ui ) {
             console.log( ui.item ?

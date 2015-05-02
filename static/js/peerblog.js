@@ -3,7 +3,7 @@ function unsubscribe(address) {
     jQuery("#"+address+"_loading_unsubscribe").html('<img src="static/images/ajax-loader.gif">');
     jQuery.ajax({
         type: "POST",
-        url: "/unsubscribe",
+        url: "/peerblog/unsubscribe/",
         dataType: "json",
         data: {
             "address": address
@@ -30,7 +30,7 @@ function subscribe(address) {
     jQuery("#"+address+"_loading_subscribe").html('<img src="static/images/ajax-loader.gif">');
     jQuery.ajax({
         type: "POST",
-        url: "/subscribe",
+        url: "/peerblog/subscribe/",
         dataType: "json",
         data: {
             "address": address
@@ -57,7 +57,7 @@ function view_latest(address) {
     jQuery("#"+address+"_loading_latest").html('<img src="static/images/ajax-loader.gif">');
     jQuery.ajax({
         type: "POST",
-        url: "/view_latest_post",
+        url: "/peerblog/view_latest_post/",
         dataType: "json",
         data: {
             "address": address
@@ -110,7 +110,7 @@ function submit_new_blogpost(wallet_passphrase) {
 
     jQuery.ajax({
         type: "POST",
-        url: "/submit_blogpost",
+        url: "/peerblog/submit_blogpost/",
         dataType: "json",
         data: post_data,
         success: function(data) {
@@ -145,7 +145,7 @@ function submit_new_blogpost(wallet_passphrase) {
 function blockchain_scan_status() {
     jQuery.ajax({
         type: "POST",
-        url: "/blockchain_scan_status",
+        url: "/blockchain_scan_status/",
         dataType: "json",
         data: {},
         success: function(data) {
@@ -169,7 +169,7 @@ function blockchain_scan_status() {
 function scan_blogs() {
     jQuery.ajax({
         type: "POST",
-        url: "/scan_blogs",
+        url: "/peerblog/scan_blogs/",
         dataType: "json",
         data: {},
         success: function(data) {
@@ -184,7 +184,7 @@ function scan_blogs() {
 function get_blogs() {
     jQuery.ajax({
         type: "POST",
-        url: "/get_blogs",
+        url: "/peerblog/get_blogs/",
         dataType: "json",
         data: {
             "address": $('#peercoin_address').val()
@@ -194,7 +194,7 @@ function get_blogs() {
             //My Blog
             var html = "";
             jQuery.each(data.data.mine, function(k,v){
-                v['time'] = moment(v['time']*1000).calendar();
+                v.time = moment(v.time*1000).calendar();
                 html += ich.myblog_template(v, true);
             });
             jQuery('#my_blog_posts').html(html);
@@ -202,7 +202,7 @@ function get_blogs() {
             //Subscription Blogs
             html = "";
             jQuery.each(data.data.sub, function(k,v){
-                v['time'] = moment(v['time']*1000).calendar();
+                v.time = moment(v.time*1000).calendar();
                 html += ich.sub_template(v, true);
             });
             jQuery('#sub_blog_posts').html(html);
@@ -211,7 +211,7 @@ function get_blogs() {
             //browse_blogs
             html = "";
             jQuery.each(data.data.browse, function(k,v){
-                v['latest_post_time'] = moment(v['latest_post_time']*1000).calendar();
+                v.latest_post_time = moment(v.latest_post_time*1000).calendar();
                 html += ich.browse_template(v, true);
             });
             jQuery('#browse_blogs').html(html);
@@ -228,7 +228,7 @@ var address_to_balance = {};
 $(document).ready(function(){
     jQuery.ajax({
         type: "POST",
-        url: "/get_addresses",
+        url: "/get_addresses/",
         dataType: "json",
         data: {},
         success: function(data) {

@@ -2,7 +2,7 @@ function remove_from_spamlist(address) {
     if(confirm("Are you sure?")) {
         jQuery.ajax({
             type: "POST",
-            url: "/remove_from_spamlist",
+            url: "/peermessage/remove_from_spamlist/",
             dataType: "json",
             data: {
                 "address": address
@@ -25,7 +25,7 @@ function submit_add_spam(address) {
         jQuery("#submit_add_spam").hide();
         jQuery.ajax({
             type: "POST",
-            url: "/mark_address_as_spam",
+            url: "/peermessage/mark_address_as_spam/",
             dataType: "json",
             data: {
                 "address": $("#spamlist_new_address").val()
@@ -47,7 +47,7 @@ function submit_add_spam(address) {
 function get_spamlist() {
     jQuery.ajax({
         type: "POST",
-        url: "/get_spamlist",
+        url: "/peermessage/get_spamlist/",
         dataType: "json",
         data: { },
         success: function(data) {
@@ -74,7 +74,7 @@ var address_to_balance = {};
 $(document).ready(function(){
     jQuery.ajax({
         type: "POST",
-        url: "/get_addresses",
+        url: "/get_addresses/",
         dataType: "json",
         data: {},
         success: function(data) {

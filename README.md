@@ -1,4 +1,4 @@
-Peerapps Frontend
+Peerapps Frontend [[Backend Repo]](https://github.com/Peerapps/Peerapps)
 ===
 [![Tip Balance For Commits](http://peer4commit.com/projects/148.svg)](http://peer4commit.com/projects/148)
 
@@ -11,7 +11,7 @@ When the app starts up, it opens setup.html in the user's default browser. The o
 Mockjax is installed - which means all backend api calls are intercepted and returned with frozen valid data (or an error). This means to install a frontend on a production version of peerapps, you simply need to open up static/js/peerapps_mockjax.js and set enable_mockjax=false, and boom, production-ready!
 
 ## How do I run this code?
-Just drag and drop index.html onto your browse. Done. No special software needed.
+Just drag and drop one of the html filters onto your browser. Done. No special software needed.
 
 ## How do I publish my mod?
  - Fork this repo.

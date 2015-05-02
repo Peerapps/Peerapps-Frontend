@@ -16,7 +16,7 @@ function display_data() {
         "ajax": function (data, callback, settings) {
             jQuery.ajax({
                 type: "GET",
-                url: "/peercoin_minting_data",
+                url: "/peercoin_minting/peercoin_minting_data/",
                 dataType: "json",
                 success: function(data) {
                     jQuery.each(data.data, function(k,v){

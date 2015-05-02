@@ -1,7 +1,7 @@
 function config_automatic_setup() {
     jQuery.ajax({
         type: "POST",
-        url: "/config_automatic_setup",
+        url: "/config_automatic_setup/",
         dataType: "json",
         data: {},
         success: function(data) {
@@ -98,7 +98,7 @@ function update_config_visually(config) {
 function check_conf() {
     jQuery.ajax({
         type: "POST",
-        url: "/check_peercoin_conf",
+        url: "/check_peercoin_conf/",
         dataType: "json",
         data: {},
         success: function(data) {
